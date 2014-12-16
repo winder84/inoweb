@@ -1,0 +1,12 @@
+parameters:
+#    wdr_inoweb.example.class: Wdr\Bundle\InowebBundle\Example
+
+services:
+#    wdr_inoweb.example:
+#        class: %wdr_inoweb.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    wdr_inoweb.admin.service:
+        class: Wdr\Bundle\InowebBundle\Admin\ServiceAdmin
+        arguments: [~, Wdr\Bundle\InowebBundle\Entity\Service, WdrInowebBundle:ServiceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Контент", label: "Сервисы"}
