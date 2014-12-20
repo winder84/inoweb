@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}inoWeb{% endblock %}</title>
+        {% block stylesheets %}
+			{% stylesheets 'bundles/wdrinoweb/css/*' filter='cssrewrite' %}
+				<link rel="stylesheet" href="{{ asset_url }}" />
+			{% endstylesheets %}
+		{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		{% block javascripts %}
+			{% javascripts '@WdrInowebBundle/Resources/public/js/*' %}
+				<script type="text/javascript" src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+		{% endblock %}
+    </head>
+    <body>
+		{{ include("WdrInowebBundle:Default:header.html.twig") }}
+		{#{% block sonata_page_breadcrumb %}#}
+			{#<div class="row">#}
+				{#{% if sonata_seo_context is not defined %}#}
+					{#{% set sonata_seo_context = 'homepage' %}#}
+				{#{% endif %}#}
+				{#{{ sonata_block_render_event('breadcrumb', { 'context': sonata_seo_context, 'current_uri': app.request.requestUri }) }}#}
+			{#</div>#}
+		{#{% endblock %}#}
+		<div class="content">
+			{% block page_content %}
+				{% if content is defined %}
+					{{ content|raw }}
+				{% else %}
+					{% set content = block('content') %}
+					{% if content|length > 0 %}
+						{{ content|raw }}
+					{% elseif page is defined %}
+						{{ sonata_page_render_container('content', page) }}
+					{% endif %}
+				{% endif %}
+			{% endblock %}
+		</div>
+		{{ include("WdrInowebBundle:Default:footer.html.twig") }}
+    </body>
+</html>

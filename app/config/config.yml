@@ -30,7 +30,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ WdrInowebBundle, ApplicationSonataPageBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -190,11 +190,12 @@ sonata_page:
         - ^/admin\/   # ignore admin route, ie route containing 'admin'
 
     page_defaults:
-        homepage: {decorate: false} # disable decoration for homepage, key - is a page route
+        homepage: {decorate: true} # disable decoration for homepage, key - is a page route
 
     default_template: default # template key from templates section, used as default for pages
     templates:
-        default: {path: 'SonataPageBundle::layout.html.twig', name: default }
+        default:  { path: 'WdrInowebBundle:Default:base.html.twig',          name: 'default' }
+#        default: {path: 'SonataPageBundle::layout.html.twig', name: default }
 
     # manage the http errors
     catch_exceptions:

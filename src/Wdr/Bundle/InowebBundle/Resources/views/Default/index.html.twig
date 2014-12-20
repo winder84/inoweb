@@ -1,1 +1,20 @@
-Hello!
+{% block content %}
+	<ul class="servicesUl">
+		{% for key,service in services %}
+			{% if key < 3 %}
+				<li>
+					<img class="serviceImg" src="{{ asset('bundles/wdrinoweb/images/s1.png') }}" />
+					<div class="serviceBody">
+						<h3 class="serviceTitle">
+							{{ service.title }}
+						</h3>
+						<div class="serviceDelimer"></div>
+						<p class="serviceText">
+							{{ service.text }}
+						</p>
+					</div>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+{% endblock %}
