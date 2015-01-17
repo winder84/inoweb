@@ -49,9 +49,13 @@ class ServiceAdmin extends Admin
         $formMapper
             ->add('title')
             ->add('text')
-            ->add('media', 'sonata_media_type', array(
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'engine'
+            ->add('media', 'sonata_type_model_list', array(
+                'required' => true
+            ), array(
+                'link_parameters' => array(
+                    'context'  => 'engine',
+                    'provider' => 'sonata.media.provider.image'
+                )
             ))
         ;
     }

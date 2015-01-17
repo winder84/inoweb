@@ -3,10 +3,10 @@
 		{% for key,service in services %}
 			{% if key < 3 %}
 				<li>
-					<img class="serviceImg" src="{{ asset('bundles/wdrinoweb/images/s1.png') }}" />
+					<img class="serviceImg" src="{% path service.Media, 'reference' %}" />
 					<div class="serviceBody">
 						<h3 class="serviceTitle">
-							{{ service.title }}
+							{{ service.title|upper }}
 						</h3>
 						<div class="serviceDelimer"></div>
 						<p class="serviceText">
